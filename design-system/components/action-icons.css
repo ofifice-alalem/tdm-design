@@ -1,0 +1,238 @@
+/* ============================================
+   COMPONENT: ActionIcons
+   Design ref: design/src/design-tokens.css
+                (@utility action-icon-btn, action-icon-*, tooltip-*)
+   ============================================ */
+
+/* ── Wrapper ── */
+.action-icon-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.action-icon-wrapper:hover .action-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+
+/* ── Button base ── */
+.action-icon-btn {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.action-icon-btn:hover  { transform: translateY(-2px); }
+.action-icon-btn:active { transform: scale(0.9); }
+
+/* Specular shine */
+.action-icon-shine {
+    position: absolute;
+    inset: 0 0 50% 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+    pointer-events: none;
+    opacity: 0.5;
+    transition: opacity var(--speed-fast);
+    border-radius: inherit;
+}
+
+.action-icon-btn:hover .action-icon-shine { opacity: 0; }
+
+/* Icon svg */
+.action-icon-svg {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    z-index: 1;
+    transition: transform var(--speed-base);
+    flex-shrink: 0;
+}
+
+.action-icon-btn:hover .action-icon-svg { transform: scale(1.1); }
+
+/* ── Variants ── */
+.action-icon-view {
+    background: var(--bg-blue-lightest);
+    border-color: var(--bg-blue-lighter);
+    color: var(--color-primary);
+}
+.action-icon-view:hover {
+    background: var(--color-primary-dark);
+    color: var(--color-white);
+    box-shadow: 0 4px 15px rgba(var(--color-primary-raw), 0.4);
+}
+
+.action-icon-edit {
+    background: var(--bg-yellow-lightest);
+    border-color: var(--bg-yellow-lighter);
+    color: var(--color-orange-dark);
+}
+.action-icon-edit:hover {
+    background: var(--color-orange-medium);
+    color: var(--color-white);
+    box-shadow: 0 4px 15px rgba(var(--color-orange-medium-raw), 0.4);
+}
+
+.action-icon-delete {
+    background: var(--bg-red-lightest);
+    border-color: var(--bg-red-lighter);
+    color: var(--color-danger);
+}
+.action-icon-delete:hover {
+    background: var(--color-danger);
+    color: var(--color-white);
+    box-shadow: 0 4px 15px rgba(var(--color-danger-raw), 0.4);
+}
+
+.action-icon-call {
+    background: var(--bg-green-lightest);
+    border-color: var(--bg-green-lighter);
+    color: var(--color-success);
+}
+.action-icon-call:hover {
+    background: var(--color-success);
+    color: var(--color-white);
+    box-shadow: 0 4px 15px rgba(var(--color-success-raw), 0.4);
+}
+
+.action-icon-default {
+    background: var(--gray-50);
+    border-color: var(--gray-200);
+    color: var(--gray-600);
+}
+.action-icon-default:hover {
+    background: var(--gray-800);
+    color: var(--color-white);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* ── Dark mode variants ── */
+[data-theme="dark"] .action-icon-view,
+html.dark .action-icon-view {
+    background: rgba(var(--color-accent-raw), 0.1);
+    border-color: rgba(var(--color-accent-raw), 0.2);
+    color: var(--color-accent-light);
+}
+[data-theme="dark"] .action-icon-view:hover,
+html.dark .action-icon-view:hover {
+    background: var(--color-accent-light);
+    color: var(--color-black);
+    box-shadow: 0 0 20px rgba(var(--color-accent-raw), 0.6);
+}
+
+[data-theme="dark"] .action-icon-edit,
+html.dark .action-icon-edit {
+    background: rgba(245,158,11,0.1);
+    border-color: rgba(245,158,11,0.2);
+    color: var(--color-orange-light);
+}
+[data-theme="dark"] .action-icon-edit:hover,
+html.dark .action-icon-edit:hover {
+    background: var(--color-orange-medium);
+    color: var(--color-black);
+}
+
+[data-theme="dark"] .action-icon-delete,
+html.dark .action-icon-delete {
+    background: rgba(var(--color-danger-raw), 0.1);
+    border-color: rgba(var(--color-danger-raw), 0.2);
+    color: var(--color-danger-light);
+}
+[data-theme="dark"] .action-icon-delete:hover,
+html.dark .action-icon-delete:hover {
+    background: var(--color-danger);
+    color: var(--color-white);
+}
+
+[data-theme="dark"] .action-icon-call,
+html.dark .action-icon-call {
+    background: rgba(var(--color-success-raw), 0.1);
+    border-color: rgba(var(--color-success-raw), 0.2);
+    color: var(--color-success-light);
+}
+[data-theme="dark"] .action-icon-call:hover,
+html.dark .action-icon-call:hover {
+    background: var(--color-success);
+    color: var(--color-black);
+}
+
+[data-theme="dark"] .action-icon-default,
+html.dark .action-icon-default {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.2);
+    color: var(--text-gray-neutral);
+}
+[data-theme="dark"] .action-icon-default:hover,
+html.dark .action-icon-default:hover {
+    background: var(--color-white);
+    color: var(--color-black);
+}
+
+/* ── Tooltip ── */
+.action-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    margin-bottom: var(--spacing-md);
+    padding: 6px 10px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--color-white);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-xl);
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 50;
+    transition: opacity var(--speed-base), transform var(--speed-base);
+}
+
+[data-theme="dark"] .action-tooltip,
+html.dark .action-tooltip {
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Tooltip arrow */
+.action-tooltip-arrow {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+}
+
+.tooltip-blue    { background: var(--color-primary-dark); }
+.tooltip-amber   { background: var(--color-orange-dark); }
+.tooltip-red     { background: var(--color-red-dark); }
+.tooltip-emerald { background: var(--color-green-dark); }
+.tooltip-default { background: var(--gray-800); }
+
+[data-theme="dark"] .tooltip-blue,
+html.dark .tooltip-blue { background: var(--color-cyan-dark); }
+
+[data-theme="dark"] .tooltip-default,
+html.dark .tooltip-default { background: var(--gray-700); }
+
+/* Arrow color matches tooltip bg */
+.tooltip-blue    .action-tooltip-arrow { border-top-color: var(--color-primary-dark); }
+.tooltip-amber   .action-tooltip-arrow { border-top-color: var(--color-orange-dark); }
+.tooltip-red     .action-tooltip-arrow { border-top-color: var(--color-red-dark); }
+.tooltip-emerald .action-tooltip-arrow { border-top-color: var(--color-green-dark); }
+.tooltip-default .action-tooltip-arrow { border-top-color: var(--gray-800); }
+
+[data-theme="dark"] .tooltip-blue .action-tooltip-arrow,
+html.dark .tooltip-blue .action-tooltip-arrow { border-top-color: var(--color-cyan-dark); }

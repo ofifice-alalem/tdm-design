@@ -1,0 +1,82 @@
+/* ============================================
+   COMPONENT: ViewToggle
+   Design ref: design/src/design-tokens.css
+                (@utility view-toggle-wrapper, view-toggle-btn-active/inactive)
+   ============================================ */
+
+/* ── Wrapper ── */
+.view-toggle-wrapper {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-xs);
+    background: var(--glass-gradient-light);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-gradient-start);
+    border-radius: var(--radius-md);
+    gap: var(--spacing-xs);
+}
+
+[data-theme="dark"] .view-toggle-wrapper,
+html.dark .view-toggle-wrapper {
+    background: rgba(20, 20, 25, 0.9);
+    border: 2px solid rgba(var(--color-cyan-bright-raw), 0.4);
+    box-shadow: 0 0 15px rgba(var(--color-cyan-bright-raw), 0.15);
+}
+
+/* ── Shared button base ── */
+.view-toggle-btn-active,
+.view-toggle-btn-inactive {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    border: none;
+}
+
+/* ── Active ── */
+.view-toggle-btn-active {
+    background: var(--color-white);
+    color: var(--color-primary-dark);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+[data-theme="dark"] .view-toggle-btn-active,
+html.dark .view-toggle-btn-active {
+    background: rgba(var(--color-cyan-bright-raw), 0.25);
+    color: var(--color-white);
+    border: 1px solid rgba(var(--color-cyan-bright-raw), 0.6);
+    box-shadow: 0 0 15px rgba(var(--color-cyan-bright-raw), 0.4);
+    font-weight: 600;
+}
+
+/* ── Inactive ── */
+.view-toggle-btn-inactive {
+    background: transparent;
+    color: var(--gray-500);
+}
+
+.view-toggle-btn-inactive:hover {
+    color: var(--gray-700);
+}
+
+[data-theme="dark"] .view-toggle-btn-inactive,
+html.dark .view-toggle-btn-inactive {
+    color: rgb(180, 180, 180);
+}
+
+[data-theme="dark"] .view-toggle-btn-inactive:hover,
+html.dark .view-toggle-btn-inactive:hover {
+    color: var(--color-white);
+    background: rgba(var(--color-cyan-bright-raw), 0.1);
+}
+
+/* ── Icon ── */
+.view-toggle-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}

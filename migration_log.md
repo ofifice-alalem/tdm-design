@@ -76,3 +76,169 @@
 - Replaced Tailwind `dark:` prefixes with explicit `[data-theme="dark"]` + `html.dark` selectors
 
 ---
+
+## [Select] ✅ Completed
+
+**Timestamp**: 2025-01-01T00:03:00Z
+
+### Files Created
+- `components/ui/Select.jsx`
+- `design-system/components/select.css`
+
+### Logic (from project 1)
+- Props: `value`, `onChange`, `options`, `placeholder`
+- Click-outside detection via `useRef` + `mousedown` listener
+- Controlled open/close state
+- Finds selected option label for display
+
+### Design (from project 2)
+- Trigger: glass white bg light / dark rgba with cyan border
+- Dropdown: frosted glass panel, fade+scale animation (`selectFadeIn`)
+- Active option: blue tint light / cyan tint dark
+- Chevron rotates 180° when open
+- Specular shine on hover (`.select-shine`)
+- Tokens used: `--radius-md`, `--spacing-*`, `--color-cyan-bright-raw`, `--gray-*`
+
+### Issues
+- Replaced all Tailwind `dark:` inline classes with explicit CSS selectors
+
+---
+
+## [Tabs] ✅ Completed
+
+**Timestamp**: 2025-01-01T00:04:00Z
+
+### Files Created
+- `components/ui/Tabs.jsx`
+- `design-system/components/tabs.css`
+
+### Logic (from project 1)
+- Props: `tabs`, `defaultTab`, `onChange`, `className`
+- Sliding indicator: measures `offsetLeft` + `offsetWidth` of active tab via `useRef`
+- `useEffect` recalculates indicator on `activeTab` or `tabs` change
+- Supports `tab.icon`, `tab.hasAlert` per tab item
+
+### Design (from project 2)
+- Wrapper: frosted glass pill container with custom scrollbar
+- Indicator: white pill (light) / translucent white with cyan glow (dark), spring easing `cubic-bezier(0.34,1.56,0.64,1)`
+- Active tab: dark gray (light) / cyan-400 (dark)
+- Inactive tab: gray-400 with hover scale-105 / active scale-95
+- Alert dot: pulsing red dot via `tabAlertPulse` keyframe
+- Tokens used: `--radius-lg`, `--radius-xl`, `--spacing-*`, `--color-cyan-bright-raw`, `--gray-*`
+
+### Issues
+- Replaced all Tailwind `dark:` + `scale-*` inline classes with explicit CSS selectors and transforms
+
+---
+
+## [ActionIcons] ✅ Completed
+
+**Timestamp**: 2025-01-01T00:05:00Z
+
+### Files Created
+- `components/ui/ActionIcons.jsx`
+- `design-system/components/action-icons.css`
+
+### Logic (from project 1)
+- Props: `type`, `onClick`, `tooltip`
+- `iconsMap`: 14 icon types mapped to lucide-react components
+- `btnClassMap`: 4 typed variants (view/edit/delete/call), fallback to default
+- `tooltipClassMap`: 4 color variants for tooltip
+- Early return if icon type not found
+
+### Design (from project 2)
+- Button base: glass backdrop, border, lift on hover (`translateY(-2px)`), shrink on active (`scale(0.9)`)
+- Specular shine overlay fades out on hover
+- 5 variants: view (blue), edit (amber), delete (red), call (green), default (gray)
+- Each variant: tinted bg + border light / solid bg + glow on hover
+- Dark mode: translucent tinted bg → solid color on hover with glow
+- Tooltip: CSS-only hover reveal via `.action-icon-wrapper:hover .action-tooltip`
+- Tooltip arrow via border-trick on `.action-tooltip-arrow`
+- Tokens used: `--bg-*`, `--color-*`, `--radius-md`, `--spacing-md`, `--shadow-xl`
+
+### Issues
+- Replaced Tailwind `group/tooltip` hover pattern with plain CSS parent hover selector
+
+---
+
+## [DatePicker] ✅ Completed
+
+**Timestamp**: 2025-01-01T00:06:00Z
+
+### Files Created
+- `components/ui/DatePicker.jsx`
+- `design-system/components/datepicker.css`
+
+### Logic (from project 1)
+- Props: `value` (string `YYYY-MM-DD`), `onChange`
+- Splits value into year/month/day parts
+- Each input strips non-digits via `/\D/g` regex
+- Reconstructs and emits full date string on any field change
+- Year input has `flex: 2` (wider), day/month have `flex: 1`
+
+### Design (from project 2)
+- Wrapper: flex row with gap, full width
+- Separator `/`: light gray (light mode) / dark gray (dark mode)
+- Input: white bg, 2px border, center-aligned text, glass backdrop
+- Focus: primary color border + ring glow (light) / cyan border + cyan glow (dark)
+- Hover: slightly darker border + subtle shadow
+- Tokens used: `--radius-md`, `--spacing-lg`, `--color-primary-raw`, `--color-cyan-bright-raw`, `--gray-*`
+
+### Issues
+- None — straightforward component with no Tailwind group patterns
+
+---
+
+## [SearchField] ✅ Completed
+
+**Timestamp**: 2025-01-01T00:07:00Z
+
+### Files Created
+- `components/ui/SearchField.jsx`
+- `design-system/components/search-field.css`
+
+### Logic (from project 1)
+- Props: `placeholder`, `onChange`, `className`
+- Controlled `query` state + `isFocused` state
+- Clear button resets query and fires `onChange('')`
+- Shortcut hint (⌘K) shown when query is empty, hidden when typing
+
+### Design (from project 2)
+- Layered architecture: absolute `.search-bg` + relative input on top (z-index 10)
+- Focus state: primary border + ring glow (light) / cyan border + cyan glow (dark)
+- Search icon: scales up + changes color on focus
+- Clear button: rotates 90° on hover, turns red
+- Shortcut hint: opacity 0.4 → 1 on wrapper hover
+- Focus glow: radial cyan gradient overlay, only visible in dark mode
+- Tokens used: `--radius-lg`, `--spacing-*`, `--color-primary-raw`, `--color-cyan-bright-raw`, `--gray-*`
+
+### Issues
+- Replaced Tailwind `dark:` inline classes and `group` hover pattern with explicit CSS selectors
+- Focus glow simplified: rendered conditionally in JSX when `isFocused`, CSS handles dark-mode opacity
+
+---
+
+## [ViewToggle] ✅ Completed
+
+**Timestamp**: 2025-01-01T00:08:00Z
+
+### Files Created
+- `components/ui/ViewToggle.jsx`
+- `design-system/components/view-toggle.css`
+
+### Logic (from project 1)
+- Props: `onViewChange`, `defaultView`, `className`
+- Controlled `view` state (`'table'` | `'grid'`)
+- Two buttons toggle between views, fires `onViewChange` callback
+
+### Design (from project 2)
+- Wrapper: glass pill container with subtle border
+- Dark mode wrapper: dark bg + cyan border + cyan glow
+- Active button: white bg + primary color + shadow (light) / cyan tint + cyan border + glow (dark)
+- Inactive button: transparent + gray, hover lightens color
+- Tokens used: `--radius-md`, `--radius-sm`, `--spacing-xs`, `--spacing-md`, `--color-cyan-bright-raw`, `--glass-gradient-*`
+
+### Issues
+- None — simplest component in the library
+
+---

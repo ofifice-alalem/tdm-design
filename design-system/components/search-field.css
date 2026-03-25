@@ -1,0 +1,218 @@
+/* ============================================
+   COMPONENT: SearchField
+   Design ref: design/src/design-tokens.css
+                (@utility search-bg, search-clear-btn)
+   ============================================ */
+
+/* ── Wrapper ── */
+.search-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 28rem;
+}
+
+/* ── Background layer ── */
+.search-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    background: var(--color-white);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 2px solid var(--gray-300);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06),
+                inset 0 1px 2px rgba(0,0,0,0.02);
+    transition: all var(--transition-slow);
+    pointer-events: none;
+}
+
+.search-bg-focused {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-raw), 0.1),
+                0 20px 40px rgba(var(--color-primary-raw), 0.15);
+}
+
+.search-wrapper:not(:focus-within) .search-bg:hover {
+    border-color: var(--gray-400);
+}
+
+[data-theme="dark"] .search-bg,
+html.dark .search-bg {
+    background: rgba(30, 30, 35, 0.9);
+    border: 2px solid rgba(var(--color-cyan-bright-raw), 0.4);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4),
+                0 0 15px rgba(var(--color-cyan-bright-raw), 0.15),
+                inset 0 1px 0 rgba(var(--color-cyan-bright-raw), 0.12);
+}
+
+[data-theme="dark"] .search-bg-focused,
+html.dark .search-bg-focused {
+    border-color: rgba(var(--color-cyan-bright-raw), 0.8);
+    box-shadow: 0 0 0 3px rgba(var(--color-cyan-bright-raw), 0.15),
+                0 0 30px rgba(var(--color-cyan-bright-raw), 0.2);
+}
+
+/* ── Search icon ── */
+.search-icon {
+    position: absolute;
+    left: var(--spacing-2xl);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: var(--gray-400);
+    transition: all var(--speed-base);
+    z-index: 10;
+    pointer-events: none;
+    flex-shrink: 0;
+}
+
+.search-icon-focused {
+    color: var(--color-primary);
+    transform: translateY(-50%) scale(1.1);
+}
+
+[data-theme="dark"] .search-icon,
+html.dark .search-icon {
+    color: var(--gray-500);
+}
+
+[data-theme="dark"] .search-icon-focused,
+html.dark .search-icon-focused {
+    color: var(--color-accent-light);
+}
+
+/* ── Input ── */
+.search-input {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    padding: 14px var(--spacing-5xl) 14px 44px;
+    border-radius: var(--radius-lg);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    background: transparent;
+    color: var(--gray-800);
+    outline: none;
+    transition: all var(--transition-base);
+    border: none;
+}
+
+.search-input::placeholder {
+    color: var(--gray-400);
+}
+
+[data-theme="dark"] .search-input,
+html.dark .search-input {
+    color: var(--gray-100);
+}
+
+[data-theme="dark"] .search-input::placeholder,
+html.dark .search-input::placeholder {
+    color: var(--gray-600);
+}
+
+/* ── Right slot ── */
+.search-right-slot {
+    position: absolute;
+    right: var(--spacing-2xl);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    z-index: 10;
+}
+
+/* ── Clear button ── */
+.search-clear-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-sm);
+    background: var(--gray-100);
+    color: var(--gray-400);
+    transition: all 200ms ease;
+}
+
+.search-clear-btn:hover {
+    color: var(--color-danger);
+    background: var(--bg-red-lightest);
+    transform: rotate(90deg);
+}
+
+[data-theme="dark"] .search-clear-btn,
+html.dark .search-clear-btn {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .search-clear-btn:hover,
+html.dark .search-clear-btn:hover {
+    color: var(--color-danger-light);
+    background: rgba(var(--color-danger-raw), 0.1);
+}
+
+.search-clear-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* ── Shortcut hint ── */
+.search-shortcut {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: var(--radius-sm);
+    opacity: 0.4;
+    transition: opacity var(--speed-base);
+}
+
+.search-wrapper:hover .search-shortcut {
+    opacity: 1;
+}
+
+[data-theme="dark"] .search-shortcut,
+html.dark .search-shortcut {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.search-shortcut-icon {
+    width: 12px;
+    height: 12px;
+    color: var(--gray-400);
+}
+
+.search-shortcut-key {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--gray-400);
+}
+
+[data-theme="dark"] .search-shortcut-icon,
+[data-theme="dark"] .search-shortcut-key,
+html.dark .search-shortcut-icon,
+html.dark .search-shortcut-key {
+    color: var(--gray-500);
+}
+
+/* ── Focus glow (dark mode only) ── */
+.search-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: var(--radius-lg);
+    background: radial-gradient(circle at 50% 50%,
+        rgba(var(--color-cyan-bright-raw), 0.06), transparent 60%);
+    opacity: 0;
+    transition: opacity 700ms ease;
+}
+
+[data-theme="dark"] .search-glow,
+html.dark .search-glow {
+    opacity: 1;
+}

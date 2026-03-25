@@ -1,0 +1,196 @@
+/* ============================================
+   COMPONENT: Select
+   Design ref: design-3/components/all.css (.select-trigger, .select-options)
+                design/src/design-tokens.css (@utility select-trigger, select-dropdown)
+   ============================================ */
+
+/* ── Wrapper ── */
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* ── Trigger ── */
+.select-trigger {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background: rgb(255, 255, 255);
+    color: var(--gray-800);
+    border: 2px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05),
+                inset 0 1px 2px rgba(0,0,0,0.02);
+    transition: all var(--transition-base);
+    overflow: hidden;
+}
+
+.select-trigger:hover {
+    border-color: var(--gray-400);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08),
+                inset 0 1px 2px rgba(0,0,0,0.03);
+}
+
+[data-theme="dark"] .select-trigger,
+html.dark .select-trigger {
+    background: rgba(30, 30, 35, 0.9);
+    color: var(--color-white);
+    border: 2px solid rgba(var(--color-cyan-bright-raw), 0.4);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5),
+                0 0 12px rgba(var(--color-cyan-bright-raw), 0.12),
+                inset 0 1px 0 rgba(var(--color-cyan-bright-raw), 0.08);
+}
+
+[data-theme="dark"] .select-trigger:hover,
+html.dark .select-trigger:hover {
+    border-color: rgba(var(--color-cyan-bright-raw), 0.6);
+    background: rgba(35, 35, 40, 0.95);
+    box-shadow: 0 0 20px rgba(var(--color-cyan-bright-raw), 0.2),
+                inset 0 0 15px rgba(var(--color-cyan-bright-raw), 0.06);
+}
+
+/* Specular shine */
+.select-shine {
+    position: absolute;
+    inset: 0 0 50% 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--speed-fast);
+    border-radius: inherit;
+}
+
+.select-trigger:hover .select-shine {
+    opacity: 1;
+}
+
+[data-theme="dark"] .select-shine,
+html.dark .select-shine {
+    background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
+}
+
+/* ── Text states ── */
+.select-value {
+    position: relative;
+    z-index: 1;
+    font-size: var(--font-sm);
+    color: var(--gray-800);
+}
+
+[data-theme="dark"] .select-value,
+html.dark .select-value {
+    color: var(--gray-200);
+}
+
+.select-placeholder {
+    position: relative;
+    z-index: 1;
+    font-size: var(--font-sm);
+    color: var(--gray-500);
+}
+
+/* ── Chevron ── */
+.select-chevron {
+    position: relative;
+    z-index: 1;
+    width: 16px;
+    height: 16px;
+    color: var(--gray-400);
+    transition: transform var(--speed-fast) var(--ease-out),
+                color var(--speed-fast);
+    flex-shrink: 0;
+}
+
+.select-trigger:hover .select-chevron {
+    color: var(--color-primary);
+}
+
+[data-theme="dark"] .select-trigger:hover .select-chevron,
+html.dark .select-trigger:hover .select-chevron {
+    color: var(--color-accent-light);
+}
+
+.select-chevron-open {
+    transform: rotate(180deg);
+}
+
+/* ── Dropdown ── */
+.select-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: var(--spacing-md);
+    width: 100%;
+    max-height: 15rem;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid rgba(229, 231, 235, 0.5);
+    border-radius: var(--radius-md);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    z-index: 50;
+    padding: var(--spacing-sm);
+    animation: selectFadeIn 150ms var(--ease-out);
+}
+
+[data-theme="dark"] .select-dropdown,
+html.dark .select-dropdown {
+    background: rgba(15, 15, 20, 0.95);
+    border: 1px solid rgba(var(--color-cyan-bright-raw), 0.3);
+    box-shadow: 0 0 30px rgba(var(--color-cyan-bright-raw), 0.2),
+                0 10px 40px rgba(0,0,0,0.8);
+}
+
+@keyframes selectFadeIn {
+    from { opacity: 0; transform: scale(0.97) translateY(-4px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── Options ── */
+.select-option {
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-sm);
+    cursor: pointer;
+    transition: background var(--speed-fast), color var(--speed-fast);
+}
+
+.select-option-active {
+    background: var(--bg-blue-lightest);
+    color: var(--color-primary-dark);
+    font-weight: 700;
+}
+
+[data-theme="dark"] .select-option-active,
+html.dark .select-option-active {
+    background: rgba(var(--color-cyan-bright-raw), 0.2);
+    color: rgb(103, 232, 249);
+}
+
+.select-option-inactive {
+    color: var(--gray-700);
+    font-weight: 500;
+}
+
+.select-option-inactive:hover {
+    background: var(--gray-100);
+}
+
+[data-theme="dark"] .select-option-inactive,
+html.dark .select-option-inactive {
+    color: var(--gray-300);
+}
+
+[data-theme="dark"] .select-option-inactive:hover,
+html.dark .select-option-inactive:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
