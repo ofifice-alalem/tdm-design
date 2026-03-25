@@ -1,0 +1,181 @@
+/* ============================================
+   COMPONENT: Modal
+   Design ref: design-3/components/overlays.css
+                design/src/design-tokens.css (@utility modal-*)
+   ============================================ */
+
+/* ── Overlay & Backdrop ── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+}
+
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: -1;
+}
+
+/* ── Panel base ── */
+.modal-panel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 32rem;
+    border-radius: var(--radius-xl);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-top-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15),
+                inset 0 0 20px rgba(255,255,255,0.5);
+}
+
+[data-theme="dark"] .modal-panel,
+html.dark .modal-panel {
+    background: rgba(15, 15, 20, 0.95);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8),
+                0 0 40px rgba(0,255,255,0.25),
+                inset 0 1px 0 rgba(0,255,255,0.2);
+}
+
+/* ── Glow overlays ── */
+.modal-glow {
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 50%;
+    pointer-events: none;
+    border-radius: inherit;
+    z-index: 0;
+}
+
+.modal-glow-primary {
+    background: linear-gradient(180deg,
+        rgba(var(--color-primary-raw), 0.08) 0%, transparent 100%);
+}
+
+.modal-glow-danger {
+    background: linear-gradient(180deg,
+        rgba(var(--color-danger-raw), 0.08) 0%, transparent 100%);
+}
+
+.modal-glow-warning {
+    background: linear-gradient(180deg,
+        rgba(var(--color-warning-raw), 0.08) 0%, transparent 100%);
+}
+
+/* ── Header ── */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-5) var(--space-5) var(--space-4);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+    position: relative;
+    z-index: 10;
+}
+
+[data-theme="dark"] .modal-header,
+html.dark .modal-header {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.modal-header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.modal-title {
+    font-weight: 700;
+    font-size: var(--font-base);
+    color: var(--gray-800);
+    letter-spacing: 0.01em;
+}
+
+[data-theme="dark"] .modal-title,
+html.dark .modal-title {
+    color: var(--color-white);
+}
+
+/* ── Icon wrap ── */
+.modal-icon-wrap {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(229, 231, 235, 0.5);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+[data-theme="dark"] .modal-icon-wrap,
+html.dark .modal-icon-wrap {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.modal-icon-svg {
+    width: 20px;
+    height: 20px;
+}
+
+.modal-icon-primary { color: var(--color-primary-dark); }
+.modal-icon-danger  { color: var(--color-danger); }
+.modal-icon-warning { color: var(--color-warning); }
+
+[data-theme="dark"] .modal-icon-primary,
+html.dark .modal-icon-primary { color: var(--color-accent-light); }
+
+[data-theme="dark"] .modal-icon-danger,
+html.dark .modal-icon-danger  { color: var(--color-danger-light); }
+
+[data-theme="dark"] .modal-icon-warning,
+html.dark .modal-icon-warning { color: var(--color-warning-light); }
+
+/* ── Close button ── */
+.modal-close-btn {
+    color: var(--gray-400);
+    background: rgba(255, 255, 255, 0.5);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    transition: all 200ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close-btn:hover {
+    color: var(--color-danger);
+    background: var(--bg-red-lightest);
+}
+
+[data-theme="dark"] .modal-close-btn,
+html.dark .modal-close-btn {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .modal-close-btn:hover,
+html.dark .modal-close-btn:hover {
+    background: rgba(var(--color-danger-raw), 0.2);
+}
+
+.modal-close-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* ── Body ── */
+.modal-body {
+    position: relative;
+    z-index: 10;
+    padding: var(--space-5);
+}

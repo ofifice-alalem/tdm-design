@@ -1,0 +1,155 @@
+/* ============================================
+   DESIGN SYSTEM - TOKENS
+   Source: design-3/tokens/foundation.css + design/design-tokens.css
+   ============================================ */
+
+:root {
+    /* Spacing (8pt scale) */
+    --space-0: 0px;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-12: 48px;
+    --space-16: 64px;
+
+    /* Spacing aliases */
+    --spacing-xs: 4px;
+    --spacing-sm: 6px;
+    --spacing-md: 8px;
+    --spacing-lg: 10px;
+    --spacing-xl: 14px;
+    --spacing-2xl: 16px;
+    --spacing-3xl: 20px;
+    --spacing-4xl: 24px;
+    --spacing-5xl: 32px;
+
+    /* Typography */
+    --font-xs: 12px;
+    --font-sm: 14px;
+    --font-base: 16px;
+    --font-lg: 18px;
+    --font-xl: 20px;
+    --font-2xl: 24px;
+    --font-3xl: 30px;
+    --font-4xl: 36px;
+
+    /* Border Radius */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-2xl: 24px;
+    --radius-3xl: 16px;
+    --radius-4xl: 18px;
+    --radius-full: 9999px;
+
+    /* Animation */
+    --speed-fast: 150ms;
+    --speed-base: 300ms;
+    --speed-slow: 500ms;
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --transition-base: 300ms ease;
+    --transition-slow: 500ms ease;
+
+    /* Glass */
+    --glass-blur: 20px;
+    --glass-saturate: 180%;
+    --glass-bg-light: rgba(255, 255, 255, 0.8);
+    --glass-bg-dark: rgba(15, 15, 20, 0.75);
+    --glass-border-light: rgba(255, 255, 255, 0.6);
+    --glass-border-dark: rgba(0, 255, 255, 0.3);
+    --glass-gradient-start: rgba(255, 255, 255, 0.8);
+    --glass-gradient-light: rgba(255, 255, 255, 0.4);
+    --glass-gradient-lighter: rgba(255, 255, 255, 0.2);
+    --glass-gradient-lightest: rgba(255, 255, 255, 0.1);
+    --glass-gradient-end: rgba(255, 255, 255, 0.3);
+
+    /* Solid Colors */
+    --color-primary: rgb(59, 130, 246);
+    --color-primary-dark: rgb(37, 99, 235);
+    --color-primary-light: rgb(96, 165, 250);
+    --color-accent: rgb(0, 255, 255);
+    --color-accent-light: rgb(34, 211, 238);
+    --color-success: rgb(16, 185, 129);
+    --color-success-light: rgb(52, 211, 153);
+    --color-danger: rgb(239, 68, 68);
+    --color-danger-dark: rgb(185, 28, 28);
+    --color-danger-light: rgb(252, 165, 165);
+    --color-warning: rgb(249, 115, 22);
+    --color-warning-light: rgb(251, 146, 60);
+    --color-secondary: rgb(168, 85, 247);
+    --color-secondary-light: rgb(196, 181, 253);
+    --color-white: rgb(255, 255, 255);
+    --color-black: rgb(0, 0, 0);
+    --color-orange-dark: rgb(217, 119, 6);
+    --color-orange-medium: rgb(245, 158, 11);
+    --color-orange-light: rgb(251, 191, 36);
+    --color-red-dark: rgb(220, 38, 38);
+    --color-green-dark: rgb(5, 150, 105);
+    --color-cyan-dark: rgb(8, 145, 178);
+
+    /* Raw RGB for rgba() */
+    --color-primary-raw: 59 130 246;
+    --color-primary-dark-raw: 37 99 235;
+    --color-primary-light-raw: 96 165 250;
+    --color-accent-raw: 0 255 255;
+    --color-accent-light-raw: 34 211 238;
+    --color-success-raw: 16 185 129;
+    --color-success-light-raw: 52 211 153;
+    --color-danger-raw: 239 68 68;
+    --color-danger-dark-raw: 185 28 28;
+    --color-danger-light-raw: 252 165 165;
+    --color-warning-raw: 249 115 22;
+    --color-warning-light-raw: 251 146 60;
+    --color-secondary-raw: 168 85 247;
+    --color-secondary-light-raw: 196 181 253;
+    --color-cyan-bright-raw: 0 255 255;
+    --color-cyan-medium-raw: 0 200 255;
+    --color-orange-medium-raw: 245 158 11;
+
+    /* Gray Scale */
+    --gray-50: rgb(249, 250, 251);
+    --gray-100: rgb(243, 244, 246);
+    --gray-200: rgb(229, 231, 235);
+    --gray-300: rgb(209, 213, 219);
+    --gray-400: rgb(156, 163, 175);
+    --gray-500: rgb(107, 114, 128);
+    --gray-600: rgb(75, 85, 99);
+    --gray-700: rgb(55, 65, 81);
+    --gray-800: rgb(31, 41, 55);
+    --gray-900: rgb(17, 24, 39);
+
+    /* Background tints */
+    --bg-blue-lightest: rgb(239, 246, 255);
+    --bg-blue-lighter: rgb(219, 234, 254);
+    --bg-blue-light: rgb(191, 219, 254);
+    --bg-yellow-lightest: rgb(255, 251, 235);
+    --bg-yellow-lighter: rgb(253, 230, 138);
+    --bg-red-lightest: rgb(254, 242, 242);
+    --bg-red-lighter: rgb(254, 202, 202);
+    --bg-green-lightest: rgb(236, 253, 245);
+    --bg-green-lighter: rgb(167, 243, 208);
+
+    /* Text */
+    --text-gray-light: rgb(200, 200, 200);
+    --text-gray-medium: rgb(180, 180, 180);
+    --text-gray-dark: rgb(140, 140, 140);
+    --text-gray-darker: rgb(100, 100, 100);
+    --text-gray-neutral: rgb(209, 213, 219);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);
+    --shadow-xl: 0 20px 25px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.04);
+
+    /* Overlay */
+    --overlay-light: rgba(0,0,0,0.02);
+    --overlay-medium: rgba(0,0,0,0.05);
+    --overlay-dark: rgba(0,0,0,0.08);
+}
