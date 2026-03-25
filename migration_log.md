@@ -242,3 +242,137 @@
 - None — simplest component in the library
 
 ---
+
+## [StatisticsCard] ✅ Completed
+
+**Timestamp**: 2025-01-01T00:09:00Z
+
+### Files Created
+- `components/cards/StatisticsCard.jsx`
+- `design-system/components/statistics-card.css`
+
+### Logic (from project 1)
+- Props: `title`, `value`, `icon`, `trend`, `trendValue`, `accent`
+- `accentConfig` map: 4 accents (blue/green/red/purple) → card + sphere + icon + label classes
+- Trend badge: `up` → TrendingUp + success colors, `down` → TrendingDown + danger colors
+- Fallback to `blue` accent if unknown value passed
+
+### Design (from project 2)
+- Card: glass backdrop, tinted gradient bg per accent, inset glow
+- Hover: lift `translateY(-8px) scale(1.02)` + stronger border + outer glow
+- Noise texture overlay (SVG fractalNoise, `mix-blend-mode: color-burn`)
+- Top specular glow gradient
+- Ambient sphere: blurred circle top-right, scales 1.5x on hover
+- Icon wrap: solid color bg (light) / translucent tinted bg with glow (dark)
+- Dark mode: deep tinted gradient bg + neon border + neon box-shadow per accent
+- Tokens used: `--radius-3xl`, `--spacing-4xl`, `--color-*-raw`, `--shadow-md`, `--transition-slow`
+
+### Issues
+- Replaced Tailwind `group-hover:` and `dark:` inline classes with explicit CSS selectors
+- `neonBorder` prop removed — handled entirely in CSS dark mode rules
+
+---
+
+## [FilterPanel] ✅ Completed
+
+**Timestamp**: 2025-01-01T00:10:00Z
+
+### Files Created
+- `components/filters/FilterPanel.jsx`
+- `design-system/components/filter-panel.css`
+
+### Logic (from project 1)
+- Props: `filters`, `onApply`, `onReset`, `inline`
+- `localValues` state tracks field values independently
+- `renderField`: dispatches to `Select`, `DatePicker`, or plain `<input>` based on `filter.type`
+- Two modes: `inline` (always visible row) and popover (trigger button + dropdown)
+- Apply closes dropdown and fires `onApply(localValues)`
+- Reset clears `localValues` and fires `onReset()`
+
+### Design (from project 2)
+- Inline wrapper: glass gradient bg, noise texture overlay, full-width flex row
+- Trigger button: glass bg + specular shine, active state with stronger border/glow
+- Dropdown: frosted glass panel, `filterDropIn` scale+fade animation, top glow gradient
+- Apply btn: solid primary (light) / cyan tint (dark)
+- Reset btn: gray (light) / translucent white (dark)
+- `form-input` class defined here (shared with DynamicRowInput)
+- Tokens used: `--radius-md/lg/2xl`, `--spacing-*`, `--glass-*`, `--color-*-raw`
+
+### Issues
+- Replaced Tailwind `group/filter` hover pattern with plain CSS
+- Replaced all `dark:` inline classes with explicit selectors
+
+---
+
+## [DynamicRowInput] ✅ Completed
+
+**Timestamp**: 2025-01-01T00:11:00Z
+
+### Files Created
+- `components/forms/DynamicRowInput.jsx`
+- `design-system/components/dynamic-row-input.css`
+
+### Logic (from project 1)
+- Props: `columns`, `onChange`, `minRows`
+- `generateEmptyRow`: reduces columns into keyed empty object + unique `id`
+- `handleAddRow` / `handleRemoveRow` / `handleChange`: all fire `onChange` with updated rows
+- `canDelete`: prevents removing below `minRows`
+- Mobile row badge shows Arabic row number (`صف N`)
+
+### Design (from project 2)
+- `form-surface`: glass wrapper with inset glow (light) / dark bg + cyan border (dark)
+- Desktop header: hidden on mobile, shows column labels + delete spacer
+- Row: column flex on desktop, stacked on mobile with mobile labels
+- Row hover: white tint (light) / cyan inset glow (dark)
+- Delete btn: red tint pill, disabled state grayed out, dark mode red glow
+- Add btn: blue tint (light) / cyan tint (dark) with glow on hover
+- Footer: border-top + bg tint, row count label
+- Responsive via `@media (min-width: 640px)` breakpoints
+- Tokens used: `--radius-*`, `--spacing-*`, `--color-*-raw`, `--bg-*`, `--gray-*`
+
+### Issues
+- Replaced all Tailwind `sm:` responsive + `dark:` inline classes with CSS media queries and explicit selectors
+- `form-input` reused from `filter-panel.css` (shared class)
+
+---
+
+## [Table] ✅ Completed
+
+**Timestamp**: 2025-01-01T00:12:00Z
+
+### Files Created
+- `components/table/Table.jsx`
+- `design-system/components/table.css`
+
+### Logic (from project 1)
+- Props: `columns`, `data`, `emptyMessage`, `onRowClick`, `viewMode`, `cardClassName`
+- Two render modes: `grid` (card layout) and `table` (standard table)
+- Grid: filters out id/product/reqId/user/actions columns for field rows, renders actions separately
+- Table: sticky header, left indicator bar on first cell, empty state with icon
+- `col.sortable` flag shows sort icon in header
+- `row.status` drives status glow sphere color in grid mode
+
+### Design (from project 2)
+- Grid: glass cards with specular shine, status glow sphere, hover lift + scale, more-icon reveal
+- Table wrapper: glass container, sticky frosted header, cyan border (dark)
+- Row hover: bg tint + cell color change + left indicator bar grows to 32px height
+- Left indicator: primary blue (light) / cyan with glow (dark)
+- Empty state: centered icon wrap + italic message
+- Status glows: approved=green, pending=amber, rejected=red — both light and dark
+- `tableFadeIn` animation on both grid and table mount
+- Tokens used: `--radius-3xl`, `--spacing-*`, `--color-*-raw`, `--glass-*`, `--transition-slow`
+
+### Issues
+- Replaced Tailwind `group`, `group-hover:`, `dark:`, `sm:`, `lg:` with CSS selectors and media queries
+- Removed unused lucide imports (Eye, Edit3, Phone, Trash2) — not used directly in Table
+
+---
+
+## [MIGRATION COMPLETE] 🎉
+
+**Timestamp**: 2025-01-01T00:12:00Z
+- All 12 components migrated
+- Design system index created at `design-system/index.css`
+- `migration_state.json` status set to `completed`
+
+---
